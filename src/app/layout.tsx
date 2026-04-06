@@ -14,8 +14,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "ReachIQ",
-  description: "AI-Powered Digital Marketing SaaS",
+  title: "Wolfixa AI",
+  description: "AI Marketing Engine for Smart Growth",
 };
 
 export default function RootLayout({
