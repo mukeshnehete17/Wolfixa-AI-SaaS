@@ -16,10 +16,21 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
-      <button onClick={handleGoogleLogin}>
-        Continue with Google
-      </button>
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="bg-white shadow-xl rounded-2xl p-8 w-[350px] text-center">
+        
+        <h1 className="text-2xl font-bold mb-6">
+          Login to <span className="text-purple-600">Wolfixa AI</span>
+        </h1>
+
+        <button
+          onClick={handleGoogleLogin}
+          className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 rounded-lg font-medium hover:scale-105 transition"
+        >
+          Continue with Google
+        </button>
+
+      </div>
     </div>
   );
 }
