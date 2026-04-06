@@ -1,0 +1,9 @@
+commit ded598274dc42f11a5c8d31bf2b005b0d904bb58
+Author: TheWolfixa <thewolfixa@gmail.com>
+Date:   Sun Apr 5 15:05:35 2026 +0530
+
+    Initial commit - Wolfixa AI SaaS
+
+diff --git a/src/app/(dashboard)/campaigns/CampaignsClient.tsx b/src/app/(dashboard)/campaigns/CampaignsClient.tsx
+new file mode 100644
+index 0000000..e69de29

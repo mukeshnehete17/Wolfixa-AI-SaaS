@@ -1,0 +1,10 @@
+src\app\(dashboard)\campaigns\CampaignsClient.tsx
+src\app\(dashboard)\campaigns\page.tsx
+src\app\(dashboard)\editor\EditorClient.tsx
+src\app\(dashboard)\editor\page.tsx
+src\app\(dashboard)\insights\InsightsClient.tsx
+src\app\(dashboard)\insights\page.tsx
+src\app\(dashboard)\posts\page.tsx
+src\app\(dashboard)\posts\PostsClient.tsx
+src\app\(dashboard)\settings\page.tsx
+src\app\(dashboard)\settings\SettingsClient.tsx
