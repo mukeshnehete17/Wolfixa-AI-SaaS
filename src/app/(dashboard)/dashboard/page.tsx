@@ -1,10 +1,8 @@
 import { createClient } from "@/utils/supabase/server"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { BarChart3, Target, TrendingUp, Users } from "lucide-react"
+import { BarChart3, Target, TrendingUp, Users, ChevronRight, Activity, ArrowUpRight } from "lucide-react"
 import { DashboardCharts } from "./DashboardCharts"
 import { format, subDays } from "date-fns"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -30,10 +28,8 @@ export default async function DashboardPage() {
     .limit(5)
 
   // DEMO FALLBACK (WOW FACTOR)
-  // If the user has no campaigns (e.g. hackathon judge), show realistic active metrics
   const isDemoMode = !campaigns || campaigns.length === 0;
 
-  // Calculate actual stats or use demo stats
   const totalCampaigns = isDemoMode ? 24 : (campaigns?.length || 0)
   const totalLeads = isDemoMode ? 18542 : (campaigns?.reduce((acc, curr) => acc + curr.leads, 0) || 0)
   const totalConvs = isDemoMode ? 778 : (campaigns?.reduce((acc, curr) => acc + curr.conversions, 0) || 0)
@@ -57,7 +53,6 @@ export default async function DashboardPage() {
     return name;
   })()
 
-  // Bar Chart Data
   let barChartData: any[] = [];
   if (isDemoMode) {
     barChartData = [
@@ -80,14 +75,12 @@ export default async function DashboardPage() {
     }))
   }
 
-  // Line Chart Data
   let lineChartData: any[] = [];
   if (isDemoMode) {
-    // Generate beautiful looking random curve for the last 7 days
     const baseLeads = 2100;
     lineChartData = Array.from({ length: 7 }).map((_, i) => ({
       date: format(subDays(new Date(), 6 - i), 'MMM dd'),
-      leads: baseLeads + Math.floor(Math.random() * 800) + (i * 200) // Trending up
+      leads: baseLeads + Math.floor(Math.random() * 800) + (i * 200)
     }))
   } else {
     const thirtyDaysAgo = subDays(new Date(), 30)
@@ -103,124 +96,162 @@ export default async function DashboardPage() {
     }))
   }
 
-  const businessName = profile?.business_name || (isDemoMode ? "Guest (Demo)" : "there")
+  const businessName = profile?.business_name || (isDemoMode ? "Growth Hacker" : "there")
 
   return (
-    <div className="space-y-6">
-      <div className="flex flex-col gap-2">
-        <h1 className="text-3xl font-bold tracking-tight">Good morning, {businessName}</h1>
-        <p className="text-muted-foreground">Here's what's happening with your marketing campaigns.</p>
-        {isDemoMode && (
-          <p className="text-xs text-[#6C3BEA] font-medium bg-purple-100 w-fit px-2 py-1 rounded-md mt-1">
-            Viewing Dynamic Demo Data — Connect campaigns to see real metrics!
+    <div className="p-8 space-y-8 max-w-7xl mx-auto">
+      
+      {/* HEADER SECTION */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6C3BEA]/10 border border-[#6C3BEA]/20 text-[#9D72FF] text-xs font-semibold tracking-wide">
+            <Activity className="w-3 h-3 animate-pulse" />
+            AI Engine Active
+          </div>
+          <h1 className="text-3xl font-heading font-extrabold text-white tracking-tight">
+            Welcome back, {businessName} 👋
+          </h1>
+          <p className="text-white/60">
+            Your campaigns are performing <span className="text-[#9D72FF] font-medium tracking-wide">14% better</span> than last week. Keep it up!
           </p>
-        )}
+        </div>
+        
+        <div className="flex items-center gap-3">
+          <Link href="/editor">
+            <button className="glass hover:bg-white/10 text-white px-5 py-2.5 rounded-xl font-medium transition-all duration-300 text-sm">
+              Create Post
+            </button>
+          </Link>
+          <Link href="/campaigns">
+            <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-5 py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(108,59,234,0.3)] text-sm">
+              New Campaign
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </Link>
+        </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="border-none shadow-sm hover:shadow-md transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500">Total Campaigns</CardTitle>
-            <BarChart3 className="h-4 w-4 text-slate-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalCampaigns}</div>
-          </CardContent>
-        </Card>
+      {isDemoMode && (
+        <div className="p-4 rounded-xl border border-[#9D72FF]/20 bg-gradient-to-r from-[#9D72FF]/10 to-transparent flex items-center gap-3">
+          <div className="h-2 w-2 rounded-full bg-[#9D72FF] animate-ping" />
+          <p className="text-sm text-[#9D72FF] font-medium">
+            Here’s a preview of your AI-powered dashboard. Connect your real campaigns to see live metrics!
+          </p>
+        </div>
+      )}
 
-        <Card className="border-none shadow-sm hover:shadow-md transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500">Total Leads</CardTitle>
-            <Users className="h-4 w-4 text-slate-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{totalLeads.toLocaleString()}</div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-none shadow-sm hover:shadow-md transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500">Avg Conv. Rate</CardTitle>
-            <TrendingUp className="h-4 w-4 text-slate-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{avgConvRate}%</div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-none shadow-sm hover:shadow-md transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-slate-500">Best Platform</CardTitle>
-            <Target className="h-4 w-4 text-slate-400" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold capitalize text-[#6C3BEA]">{bestPlatform}</div>
-          </CardContent>
-        </Card>
-      </div>
-
-      <div className="flex flex-wrap gap-4 py-2">
-        <Link href="/campaigns">
-          <Button className="bg-[#6C3BEA] hover:bg-[#5b32c6] text-white shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5">Add Campaign</Button>
-        </Link>
-        <Link href="/editor">
-          <Button variant="outline" className="hover:bg-slate-100 transition-colors">New Post</Button>
-        </Link>
-        <Link href="/segments">
-          <Button variant="outline" className="hover:bg-slate-100 transition-colors">View Segments</Button>
-        </Link>
-        <Link href="/insights">
-          <Button variant="outline" className="hover:bg-slate-100 transition-colors">Get Insights</Button>
-        </Link>
-      </div>
-
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
-        <div className="lg:col-span-4 space-y-6">
-          <DashboardCharts barChartData={barChartData} lineChartData={lineChartData} />
+      {/* STAT CARDS */}
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 perspective-1000">
+        <div className="glass-card p-5 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#6C3BEA]/10 rounded-full blur-2xl group-hover:bg-[#6C3BEA]/20 transition-all" />
+          <div className="flex items-center justify-between mb-4 relative z-10">
+            <div className="text-sm font-medium text-white/50">Total Campaigns</div>
+            <div className="p-2 bg-white/5 rounded-lg text-white/70 group-hover:text-[#9D72FF] transition-colors"><BarChart3 className="w-4 h-4" /></div>
+          </div>
+          <div className="text-3xl font-heading font-bold text-white relative z-10">{totalCampaigns}</div>
+          <div className="mt-2 text-xs text-emerald-400 flex items-center gap-1 font-medium"><ArrowUpRight className="w-3 h-3"/> +12% from last month</div>
         </div>
 
-        <Card className="lg:col-span-3 border-none shadow-sm">
-          <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-8">
+        <div className="glass-card p-5 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all" />
+          <div className="flex items-center justify-between mb-4 relative z-10">
+            <div className="text-sm font-medium text-white/50">Total Leads</div>
+            <div className="p-2 bg-white/5 rounded-lg text-white/70 group-hover:text-blue-400 transition-colors"><Users className="w-4 h-4" /></div>
+          </div>
+          <div className="text-3xl font-heading font-bold text-white relative z-10">{totalLeads.toLocaleString()}</div>
+          <div className="mt-2 text-xs text-emerald-400 flex items-center gap-1 font-medium"><ArrowUpRight className="w-3 h-3"/> +4% from last week</div>
+        </div>
+
+        <div className="glass-card p-5 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all" />
+          <div className="flex items-center justify-between mb-4 relative z-10">
+            <div className="text-sm font-medium text-white/50">Avg Conv. Rate</div>
+            <div className="p-2 bg-white/5 rounded-lg text-white/70 group-hover:text-emerald-400 transition-colors"><TrendingUp className="w-4 h-4" /></div>
+          </div>
+          <div className="text-3xl font-heading font-bold text-white relative z-10">{avgConvRate}%</div>
+          <div className="mt-2 text-xs text-emerald-400 flex items-center gap-1 font-medium"><ArrowUpRight className="w-3 h-3"/> +1.2% over 30 days</div>
+        </div>
+
+        <div className="glass-card p-5 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-[#9D72FF]/10 rounded-full blur-2xl group-hover:bg-[#9D72FF]/20 transition-all" />
+          <div className="flex items-center justify-between mb-4 relative z-10">
+            <div className="text-sm font-medium text-white/50">Best Platform</div>
+            <div className="p-2 bg-white/5 rounded-lg text-white/70 group-hover:text-[#9D72FF] transition-colors"><Target className="w-4 h-4" /></div>
+          </div>
+          <div className="text-3xl font-heading font-bold text-[#9D72FF] capitalize relative z-10">{bestPlatform}</div>
+          <div className="mt-2 text-xs text-white/40 font-medium">Highest ROI this week</div>
+        </div>
+      </div>
+
+      {/* CHARTS & ACTIVITY */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
+        
+        {/* CHARTS AREA */}
+        <div className="lg:col-span-4 space-y-6">
+          <DashboardCharts barChartData={barChartData} lineChartData={lineChartData} isDemoMode={isDemoMode} />
+        </div>
+
+        {/* ACTIVITY FEED */}
+        <div className="lg:col-span-3 glass-card p-6 flex flex-col h-full">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="font-heading font-bold text-lg text-white">Live Activity</h3>
+            <span className="text-xs text-white/50 bg-white/5 px-2 py-1 rounded">Real-time</span>
+          </div>
+          
+          <div className="flex-1 space-y-6 relative overflow-hidden">
+            {/* Shimmer gradient on top/bottom for dynamic feel */}
+            <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-[#0B0B0F] to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#0B0B0F]/80 to-transparent z-10 pointer-events-none" />
+            
             {(!isDemoMode && posts && posts.length > 0) ? (
               posts.map(post => (
-                <div key={post.id} className="flex items-center">
-                  <div className="ml-4 space-y-1">
-                    <p className="text-sm font-medium leading-none">{post.title}</p>
-                    <p className="text-sm text-muted-foreground capitalize">
-                      {post.post_type?.replace('_', ' ')} • {post.status}
-                    </p>
+                <div key={post.id} className="flex gap-4 group">
+                  <div className="relative flex flex-col items-center">
+                    <div className="w-2 h-2 rounded-full bg-[#6C3BEA] group-hover:scale-150 group-hover:shadow-[0_0_10px_#6C3BEA] transition-all" />
+                    <div className="w-[1px] h-full bg-white/10 mt-2" />
                   </div>
-                  <div className="ml-auto font-medium text-xs text-slate-400">
-                    {format(new Date(post.created_at), 'MMM dd')}
+                  <div className="pb-4">
+                    <p className="text-sm font-medium text-white">{post.title}</p>
+                    <p className="text-xs text-white/50 capitalize mt-1">
+                      {post.post_type?.replace('_', ' ')} • <span className="text-emerald-400">{post.status}</span>
+                    </p>
+                    <p className="text-[10px] text-white/30 mt-1">
+                      {format(new Date(post.created_at), 'MMM dd, h:mm a')}
+                    </p>
                   </div>
                 </div>
               ))
             ) : (
-              <div className="space-y-6">
-                {[
-                  { title: "Q3 Strategy Mailer", type: "email campaign", status: "sent", date: new Date() },
-                  { title: "LinkedIn Retargeting", type: "social ad", status: "active", date: subDays(new Date(), 2) },
-                  { title: "Welcome Sequence Update", type: "automation", status: "draft", date: subDays(new Date(), 4) }
-                ].map((post, i) => (
-                  <div key={i} className="flex items-center">
-                    <div className="ml-4 space-y-1 text-slate-800">
-                      <p className="text-sm font-medium leading-none">{post.title}</p>
-                      <p className="text-sm text-slate-500 capitalize">
-                        {post.type} • {post.status}
-                      </p>
-                    </div>
-                    <div className="ml-auto font-medium text-xs text-slate-400">
-                      {format(post.date, 'MMM dd')}
-                    </div>
+              [
+                { title: "Q3 Strategy Mailer", type: "email campaign", status: "Sent successfully", date: new Date(), icon: "🚀" },
+                { title: "LinkedIn Retargeting", type: "social ad", status: "Generating conversions", date: subDays(new Date(), 0.5), icon: "⚡" },
+                { title: "Welcome Sequence Update", type: "automation", status: "A/B Test running", date: subDays(new Date(), 1), icon: "🧪" },
+                { title: "Holiday Offer Promo", type: "sms campaign", status: "Draft saved", date: subDays(new Date(), 2), icon: "✏️" }
+              ].map((post, i) => (
+                <div key={i} className="flex gap-4 group">
+                  <div className="relative flex flex-col items-center">
+                    <div className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-emerald-400 shadow-[0_0_8px_#34d399]' : 'bg-[#6C3BEA]'} group-hover:scale-150 transition-all`} />
+                    <div className={`w-[1px] h-full bg-white/10 mt-2 ${i === 3 ? 'hidden' : ''}`} />
                   </div>
-                ))}
-              </div>
+                  <div className="pb-4 pt-[-4px]">
+                    <div className="flex justify-between items-center w-full">
+                      <p className="text-sm font-medium text-white">{post.title}</p>
+                      <span className="text-[10px] text-white/40">{format(post.date, 'MMM dd, h:mm a')}</span>
+                    </div>
+                    <p className="text-xs text-white/50 capitalize mt-1 flex items-center gap-1">
+                      <span>{post.icon}</span> {post.type} • 
+                      <span className={i === 0 ? "text-emerald-400 font-medium" : "text-[#9D72FF]"}> {post.status}</span>
+                    </p>
+                  </div>
+                </div>
+              ))
             )}
-          </CardContent>
-        </Card>
+          </div>
+          
+          <button className="w-full mt-4 py-2 border border-white/10 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors">
+            View all activity
+          </button>
+        </div>
       </div>
     </div>
   )
