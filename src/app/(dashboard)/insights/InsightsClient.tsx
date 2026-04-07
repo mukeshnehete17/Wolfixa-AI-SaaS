@@ -13,12 +13,12 @@ export default function InsightsClient() {
           <p className="text-white/50 mt-1">Deep analysis of your marketing performance across all funnels.</p>
         </div>
         <div className="flex items-center gap-3">
-          <select className="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-[#6C3BEA]/50">
+          <select className="bg-white/5 border border-white/10 text-white text-sm rounded-lg px-4 py-2 focus:outline-none focus:border-white/10">
             <option>Last 30 Days</option>
             <option>Last 7 Days</option>
             <option>This Year</option>
           </select>
-          <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-4 py-2 rounded-lg font-medium shadow-[0_0_15px_rgba(108,59,234,0.3)] text-sm">
+          <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-4 py-2 rounded-lg font-medium shadow-xl text-sm">
             Generate Report
           </button>
         </div>
@@ -48,12 +48,12 @@ export default function InsightsClient() {
           </p>
         </div>
 
-        <div className="glass-card p-6 border-[#6C3BEA]/20 bg-[#6C3BEA]/5">
+        <div className="glass-card p-6 border-white/10 bg-white/5">
           <div className="flex items-center gap-2 text-white/50 text-sm font-medium mb-2">
             <Activity className="w-4 h-4 text-[#9D72FF]" /> Next Best Action
           </div>
           <div className="text-lg font-heading font-bold text-white mb-2 leading-tight">Increase budget on Instagram Retargeting</div>
-          <button className="text-xs font-semibold text-[#9D72FF] bg-[#9D72FF]/10 px-3 py-1.5 rounded-md hover:bg-[#9D72FF]/20 transition-colors mt-2 active:scale-95">
+          <button className="text-xs font-semibold text-[#9D72FF] bg-white/5 px-3 py-1.5 rounded-md hover:bg-white/5 transition-colors mt-2 active:scale-95">
             Apply Recommendation
           </button>
         </div>
@@ -95,7 +95,7 @@ export default function InsightsClient() {
         </div>
 
         <div className="glass-card p-6 overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-[#9D72FF]/10 blur-3xl" />
+          <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 blur-3xl" />
           <h3 className="font-heading font-bold text-white mb-6">Top Performing Regions</h3>
           <div className="space-y-4 relative z-10">
             {[

@@ -5,9 +5,9 @@ import { Check, Sparkles, ArrowLeft } from "lucide-react"
 
 export default function PricingPage() {
   return (
-    <div className="min-h-screen bg-[#0B0B0F] animate-in fade-in duration-300 relative overflow-hidden font-sans">
+    <div className="min-h-screen bg-black animate-in fade-in duration-300 relative overflow-hidden font-sans">
       {/* Background glow */}
-      <div className="absolute top-[-20%] left-[20%] w-[60%] h-[40%] bg-[#6C3BEA]/20 blur-[150px] rounded-full pointer-events-none will-change-transform" />
+      <div className="absolute top-[-20%] left-[20%] w-[60%] h-[40%] bg-white/5 blur-[150px] rounded-full pointer-events-none will-change-transform" />
       
       <div className="max-w-7xl mx-auto px-6 py-20 relative z-10">
         
@@ -41,15 +41,15 @@ export default function PricingPage() {
           </div>
 
           {/* Pro Plan */}
-          <div className="glass-card p-8 border-[#6C3BEA]/30 bg-gradient-to-b from-[#6C3BEA]/10 to-transparent relative transform md:-translate-y-4 shadow-[0_0_40px_rgba(108,59,234,0.15)] flex flex-col">
+          <div className="glass-card p-8 border-white/10 bg-gradient-to-b from-[#6C3BEA]/10 to-transparent relative transform md:-translate-y-4 shadow-xl flex flex-col">
             <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#6C3BEA] to-[#9D72FF]" />
-            <div className="inline-flex items-center gap-1.5 bg-[#6C3BEA]/20 text-[#9D72FF] text-xs font-bold px-3 py-1 rounded-full w-fit mb-4">
+            <div className="inline-flex items-center gap-1.5 bg-white/5 text-[#9D72FF] text-xs font-bold px-3 py-1 rounded-full w-fit mb-4">
               <Sparkles className="w-3 h-3" /> MOST POPULAR
             </div>
             <h3 className="text-xl font-heading font-bold text-white mb-2">Professional</h3>
             <div className="text-white/50 text-sm mb-6">For growing teams moving fast.</div>
             <div className="text-4xl font-bold text-white mb-6">$99<span className="text-lg text-white/40 font-normal">/mo</span></div>
-            <button className="w-full py-3 glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] rounded-lg text-white font-medium shadow-[0_0_15px_rgba(108,59,234,0.3)] mb-8">
+            <button className="w-full py-3 glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] rounded-lg text-white font-medium shadow-xl mb-8">
               Upgrade to Pro
             </button>
             <div className="space-y-4 flex-1">

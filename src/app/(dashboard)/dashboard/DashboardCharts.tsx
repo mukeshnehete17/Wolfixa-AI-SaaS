@@ -7,7 +7,7 @@ export function DashboardCharts({ barChartData, lineChartData, isDemoMode = fals
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-[#0B0B0F]/90 border border-white/10 backdrop-blur-md p-3 rounded-lg shadow-xl">
+        <div className="bg-white/5 border border-white/10 backdrop-blur-md p-3 rounded-lg shadow-xl">
           <p className="text-white font-medium mb-2">{label}</p>
           {payload.map((entry: any, index: number) => (
             <div key={index} className="flex items-center gap-2 text-sm">
@@ -25,7 +25,7 @@ export function DashboardCharts({ barChartData, lineChartData, isDemoMode = fals
   return (
     <>
       <div className="glass-card p-6 border-white/5 relative overflow-hidden group">
-        <div className="absolute top-0 right-[25%] w-32 h-32 bg-[#6C3BEA]/5 rounded-full blur-[50px] pointer-events-none" />
+        <div className="absolute top-0 right-[25%] w-32 h-32 bg-white/5 rounded-full blur-[50px] pointer-events-none" />
         
         <div className="mb-6">
           <h3 className="font-heading font-bold text-lg text-white">Platform Performance</h3>
@@ -69,7 +69,7 @@ export function DashboardCharts({ barChartData, lineChartData, isDemoMode = fals
       </div>
 
       <div className="glass-card p-6 border-white/5 relative overflow-hidden group">
-         <div className="absolute bottom-0 left-[25%] w-32 h-32 bg-[#9D72FF]/5 rounded-full blur-[50px] pointer-events-none" />
+         <div className="absolute bottom-0 left-[25%] w-32 h-32 bg-white/5 rounded-full blur-[50px] pointer-events-none" />
         
         <div className="mb-6 flex items-center justify-between">
           <div>

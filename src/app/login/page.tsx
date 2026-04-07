@@ -20,17 +20,17 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#0B0B0F] font-sans">
+    <div className="flex min-h-screen bg-black font-sans">
       
       {/* LEFT PANEL - Branding & Visuals (Hidden on small screens) */}
       <div className="relative hidden lg:flex flex-1 flex-col justify-between overflow-hidden bg-gradient-to-br from-[#1A0B2E] via-[#0B0B0F] to-[#2D1B54] p-12 text-white">
         {/* Animated Orbs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#6C3BEA]/30 blur-[140px] rounded-full mix-blend-screen pointer-events-none animate-blob" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#9D72FF]/20 blur-[140px] rounded-full mix-blend-screen pointer-events-none animate-blob animation-delay-2000" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-white/5 blur-[140px] rounded-full mix-blend-screen pointer-events-none animate-blob" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-white/5 blur-[140px] rounded-full mix-blend-screen pointer-events-none animate-blob animation-delay-2000" />
         
         {/* Top Logo Area */}
         <div className="relative z-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#6C3BEA] to-[#9D72FF] shadow-[0_0_20px_rgba(108,59,234,0.5)]">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#6C3BEA] to-[#9D72FF] shadow-xl">
             <span className="text-xl font-bold tracking-tighter text-white">W</span>
           </div>
           <span className="text-2xl font-heading font-bold tracking-tight">Wolfixa AI</span>
@@ -78,8 +78,8 @@ export default function LoginPage() {
       </div>
 
       {/* RIGHT PANEL - Authentication */}
-      <div className="flex flex-1 flex-col justify-center px-6 py-12 sm:px-12 lg:px-24 border-l border-white/5 relative bg-[#0B0B0F]/95">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none mix-blend-overlay"></div>
+      <div className="flex flex-1 flex-col justify-center px-6 py-12 sm:px-12 lg:px-24 border-l border-white/5 relative bg-white/5">
+        <div className="absolute inset-0 bg-black opacity-[0.03] pointer-events-none mix-blend-overlay"></div>
         
         <motion.div 
           initial={{ opacity: 0, x: 20 }}
@@ -89,7 +89,7 @@ export default function LoginPage() {
         >
           {/* Mobile Logo Logo */}
           <div className="flex lg:hidden items-center justify-center gap-3 mb-10">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#6C3BEA] to-[#9D72FF] shadow-[0_0_20px_rgba(108,59,234,0.5)]">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-[#6C3BEA] to-[#9D72FF] shadow-xl">
               <span className="text-xl font-bold tracking-tighter text-white">W</span>
             </div>
             <span className="text-2xl font-heading font-bold text-white tracking-tight">Wolfixa AI</span>

@@ -104,7 +104,7 @@ export default async function DashboardPage() {
       {/* HEADER SECTION */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
         <div className="space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6C3BEA]/10 border border-[#6C3BEA]/20 text-[#9D72FF] text-xs font-semibold tracking-wide">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#9D72FF] text-xs font-semibold tracking-wide">
             <Activity className="w-3 h-3 animate-pulse" />
             AI Engine Active
           </div>
@@ -123,7 +123,7 @@ export default async function DashboardPage() {
             </button>
           </Link>
           <Link href="/campaigns">
-            <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-5 py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(108,59,234,0.3)] text-sm">
+            <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-5 py-2.5 rounded-xl font-medium flex items-center justify-center gap-2 shadow-xl text-sm">
               New Campaign
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -132,8 +132,8 @@ export default async function DashboardPage() {
       </div>
 
       {isDemoMode && (
-        <div className="p-4 rounded-xl border border-[#9D72FF]/20 bg-gradient-to-r from-[#9D72FF]/10 to-transparent flex items-center gap-3">
-          <div className="h-2 w-2 rounded-full bg-[#9D72FF] animate-ping" />
+        <div className="p-4 rounded-xl border border-white/10 bg-gradient-to-r from-[#9D72FF]/10 to-transparent flex items-center gap-3">
+          <div className="h-2 w-2 rounded-full bg-black animate-ping" />
           <p className="text-sm text-[#9D72FF] font-medium">
             Here’s a preview of your AI-powered dashboard. Connect your real campaigns to see live metrics!
           </p>
@@ -143,7 +143,7 @@ export default async function DashboardPage() {
       {/* STAT CARDS */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 perspective-1000">
         <div className="glass-card p-5 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#6C3BEA]/10 rounded-full blur-2xl group-hover:bg-[#6C3BEA]/20 transition-all" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-white/5 transition-all" />
           <div className="flex items-center justify-between mb-4 relative z-10">
             <div className="text-sm font-medium text-white/50">Total Campaigns</div>
             <div className="p-2 bg-white/5 rounded-lg text-white/70 group-hover:text-[#9D72FF] transition-colors"><BarChart3 className="w-4 h-4" /></div>
@@ -173,7 +173,7 @@ export default async function DashboardPage() {
         </div>
 
         <div className="glass-card p-5 relative overflow-hidden group">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-[#9D72FF]/10 rounded-full blur-2xl group-hover:bg-[#9D72FF]/20 transition-all" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full blur-2xl group-hover:bg-white/5 transition-all" />
           <div className="flex items-center justify-between mb-4 relative z-10">
             <div className="text-sm font-medium text-white/50">Best Platform</div>
             <div className="p-2 bg-white/5 rounded-lg text-white/70 group-hover:text-[#9D72FF] transition-colors"><Target className="w-4 h-4" /></div>
@@ -207,7 +207,7 @@ export default async function DashboardPage() {
               posts.map(post => (
                 <div key={post.id} className="flex gap-4 group">
                   <div className="relative flex flex-col items-center">
-                    <div className="w-2 h-2 rounded-full bg-[#6C3BEA] group-hover:scale-150 group-hover:shadow-[0_0_10px_#6C3BEA] transition-all" />
+                    <div className="w-2 h-2 rounded-full bg-black group-hover:scale-150 group-hover:shadow-xl transition-all" />
                     <div className="w-[1px] h-full bg-white/10 mt-2" />
                   </div>
                   <div className="pb-4">
@@ -230,7 +230,7 @@ export default async function DashboardPage() {
               ].map((post, i) => (
                 <div key={i} className="flex gap-4 group">
                   <div className="relative flex flex-col items-center">
-                    <div className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-emerald-400 shadow-[0_0_8px_#34d399]' : 'bg-[#6C3BEA]'} group-hover:scale-150 transition-all`} />
+                    <div className={`w-2 h-2 rounded-full ${i === 0 ? 'bg-emerald-400 shadow-xl' : 'bg-black'} group-hover:scale-150 transition-all`} />
                     <div className={`w-[1px] h-full bg-white/10 mt-2 ${i === 3 ? 'hidden' : ''}`} />
                   </div>
                   <div className="pb-4 pt-[-4px]">

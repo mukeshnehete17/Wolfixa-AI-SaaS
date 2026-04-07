@@ -4,7 +4,7 @@ import { Users, UserPlus, ShieldAlert, Sparkles, Filter, ChevronRight } from "lu
 
 export default function SegmentsClient() {
   const segments = [
-    { name: "High Value SaaS Users", count: "12,450", trend: "+12%", desc: "Users who visited pricing page + spent >5m", icon: Sparkles, color: "text-[#9D72FF]", bg: "bg-[#9D72FF]/10", border: "border-[#9D72FF]/20" },
+    { name: "High Value SaaS Users", count: "12,450", trend: "+12%", desc: "Users who visited pricing page + spent >5m", icon: Sparkles, color: "text-[#9D72FF]", bg: "bg-white/5", border: "border-white/10" },
     { name: "Recent Signups (7d)", count: "842", trend: "+4%", desc: "New trial users actively onboarding", icon: UserPlus, color: "text-emerald-400", bg: "bg-emerald-400/10", border: "border-emerald-400/20" },
     { name: "Churn Risk", count: "145", trend: "-2%", desc: "Inactive for 14 days, low engagement score", icon: ShieldAlert, color: "text-red-400", bg: "bg-red-400/10", border: "border-red-400/20" },
     { name: "All Active Users", count: "45,210", trend: "+8%", desc: "General audience for broad updates", icon: Users, color: "text-blue-400", bg: "bg-blue-400/10", border: "border-blue-400/20" },
@@ -21,7 +21,7 @@ export default function SegmentsClient() {
           <button className="p-2 border border-white/10 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors active:scale-95">
             <Filter className="w-4 h-4" />
           </button>
-          <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-4 py-2 rounded-lg font-medium shadow-[0_0_15px_rgba(108,59,234,0.3)] text-sm">
+          <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-4 py-2 rounded-lg font-medium shadow-xl text-sm">
             Create AI Segment
           </button>
         </div>
@@ -47,14 +47,14 @@ export default function SegmentsClient() {
       </div>
 
       <div className="glass-card p-8 border-white/10 mt-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="absolute top-[-50%] right-[-10%] w-[40%] h-[200%] bg-[#6C3BEA]/10 blur-[80px] rounded-full pointer-events-none" />
+        <div className="absolute top-[-50%] right-[-10%] w-[40%] h-[200%] bg-white/5 blur-[80px] rounded-full pointer-events-none" />
         <div className="relative z-10 max-w-xl">
           <h2 className="text-xl font-heading font-bold text-white mb-2">Want to reach hidden audiences?</h2>
           <p className="text-white/60 text-sm">
             Wolfixa AI can analyze your entire database and automatically discover non-obvious segments with high purchasing intent.
           </p>
         </div>
-        <button className="relative z-10 whitespace-nowrap bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors active:scale-95 text-sm shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+        <button className="relative z-10 whitespace-nowrap bg-white text-black px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors active:scale-95 text-sm shadow-xl">
           Run Smart Discovery ✨
         </button>
       </div>

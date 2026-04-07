@@ -23,13 +23,13 @@ export default function CampaignsClient() {
             <input 
               type="text" 
               placeholder="Search campaigns..." 
-              className="pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-[#6C3BEA]/50 transition-colors w-64"
+              className="pl-9 pr-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white focus:outline-none focus:border-white/10 transition-colors w-64"
             />
           </div>
           <button className="p-2 border border-white/10 rounded-lg text-white/70 hover:text-white hover:bg-white/5 transition-colors active:scale-95">
             <Filter className="w-4 h-4" />
           </button>
-          <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 shadow-[0_0_15px_rgba(108,59,234,0.3)] text-sm">
+          <button className="glow-button bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white px-4 py-2 rounded-lg font-medium flex items-center gap-2 shadow-xl text-sm">
             <Plus className="w-4 h-4" /> New Campaign
           </button>
         </div>
