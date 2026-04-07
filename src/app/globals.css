@@ -51,27 +51,47 @@
   --animate-shimmer: shimmer 2s linear infinite;
 
   @keyframes blob {
-    0% { transform: translate(0px, 0px) scale(1); }
-    33% { transform: translate(30px, -50px) scale(1.1); }
-    66% { transform: translate(-20px, 20px) scale(0.9); }
-    100% { transform: translate(0px, 0px) scale(1); }
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
   }
 
   @keyframes shimmer {
-    from { background-position: 200% 0; }
-    to { background-position: -200% 0; }
+    from {
+      background-position: 200% 0;
+    }
+
+    to {
+      background-position: -200% 0;
+    }
   }
 }
 
 :root {
   /* DARK THEME AS DEFAULT */
-  --background: oklch(0.14 0.01 270); /* ~ #0B0B0F */
-  --foreground: oklch(0.98 0 0); /* white */
-  --card: oklch(0.18 0.01 270); /* slightly lighter than bg */
+  --background: oklch(0.14 0.01 270);
+  /* ~ #0B0B0F */
+  --foreground: oklch(0.98 0 0);
+  /* white */
+  --card: oklch(0.18 0.01 270);
+  /* slightly lighter than bg */
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.18 0.01 270);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.48 0.25 285); /* #6C3BEA approximation */
+  --primary: oklch(0.48 0.25 285);
+  /* #6C3BEA approximation */
   --primary-foreground: oklch(0.98 0 0);
   --secondary: oklch(0.25 0.02 270);
   --secondary-foreground: oklch(0.98 0 0);
@@ -107,11 +127,19 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-white;
-    background-color: #0B0B0F; /* Explicitly set the requested VC-startup dark theme */
+    background-color: #0B0B0F;
+    /* Explicitly set the requested VC-startup dark theme */
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading tracking-tight;
   }
 }
@@ -119,30 +147,37 @@
 /* Utilities for premium feel */
 @layer utilities {
   .glass {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0, 0, 0, 0.1)];
   }
+
   .glass-card {
-    @apply bg-white/[0.03] backdrop-blur-2xl border border-white/5 shadow-2xl rounded-2xl transition-all duration-300;
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/5 shadow-2xl rounded-2xl transition-all duration-200 will-change-transform;
   }
+
   .glass-card:hover {
-    @apply bg-white/[0.06] border-white/20 transform -translate-y-1 shadow-[0_8px_30px_rgba(108,59,234,0.15)];
+    @apply bg-white/[0.05] border-white/20 transform -translate-y-1 shadow-[0_8px_30px_rgba(108,59,234,0.1)];
   }
+
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
   }
+
   .text-gradient-primary {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-[#6C3BEA] to-[#9D72FF];
   }
+
   .glow-button {
-    @apply relative overflow-hidden transition-all duration-300 transform hover:scale-105;
+    @apply relative overflow-hidden transition-all duration-150 transform hover:-translate-y-0.5 active:scale-95 will-change-transform;
   }
+
   .glow-button::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-[#6C3BEA] to-[#9D72FF] opacity-0 transition-opacity duration-300;
-    filter: blur(10px);
+    @apply absolute inset-0 bg-gradient-to-r from-[#6C3BEA] to-[#9D72FF] opacity-0 transition-opacity duration-200;
+    filter: blur(8px);
     z-index: -1;
   }
+
   .glow-button:hover::before {
-    @apply opacity-50;
+    @apply opacity-30;
   }
 }

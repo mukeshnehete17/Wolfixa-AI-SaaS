@@ -46,22 +46,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             const isActive = pathname === item.href || pathname?.startsWith(`${item.href}/`);
             return (
               <Link key={item.name} href={item.href}>
-                <div className={`relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-300 group ${isActive ? 'text-white' : 'text-white/50 hover:text-white hover:bg-white/5'}`}>
+                <div className={`relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 active:scale-95 group ${isActive ? 'text-white' : 'text-white/50 hover:text-white hover:bg-white/5'}`}>
                   
                   {/* Active Indicator Glow */}
                   {isActive && (
-                    <motion.div 
-                      layoutId="sidebar-active"
-                      className="absolute inset-0 bg-[#6C3BEA]/10 rounded-xl"
-                      initial={false}
-                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                    />
+                    <div className="absolute inset-0 bg-[#6C3BEA]/10 rounded-xl" />
                   )}
                   {isActive && (
                     <div className="absolute left-0 w-1 h-5 bg-[#9D72FF] rounded-r-full shadow-[0_0_10px_#9D72FF]"></div>
                   )}
 
-                  <item.icon className={`w-5 h-5 relative z-10 ${isActive ? 'text-[#9D72FF]' : 'group-hover:scale-110 transition-transform'}`} />
+                  <item.icon className="w-5 h-5 relative z-10" />
                   <span className="relative z-10 font-medium text-sm">{item.name}</span>
                 </div>
               </Link>
@@ -76,9 +71,11 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <Sparkles className="w-5 h-5 text-[#9D72FF] mb-2" />
             <div className="text-sm font-semibold text-white mb-1">Upgrade to Pro</div>
             <div className="text-xs text-white/50 mb-3">Unlock advanced AI models</div>
-            <button className="w-full py-1.5 rounded-lg bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white text-xs font-semibold shadow-[0_0_15px_rgba(108,59,234,0.3)] hover:scale-105 transition-transform">
-              View Plans
-            </button>
+            <Link href="/pricing">
+              <button className="w-full py-1.5 rounded-lg bg-gradient-to-r from-[#6C3BEA] to-[#804dfa] text-white text-xs font-semibold shadow-[0_0_15px_rgba(108,59,234,0.3)] transition-all duration-150 active:scale-95 hover:opacity-90">
+                View Plans
+              </button>
+            </Link>
           </div>
         </div>
 
